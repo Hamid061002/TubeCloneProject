@@ -73,3 +73,10 @@
   font-weight: 900;
   font-style: italic;
 }
+
+ul li a.active {
+  background-color: #262626;
+}
+ul li a.active:hover {
+  background-color: #404040;
+}

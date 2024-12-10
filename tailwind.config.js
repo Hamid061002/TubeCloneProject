@@ -8,8 +8,11 @@ export default {
     extend: {
       colors: {
         'bgColor': '#0F0F0F',
-        'colorDark': '#121212',
-        'colorLigthDark': '#222222',
+        'COLOR-2': '#121212',
+        'COLOR-3': '#222222',
+        'COLOR-4': '#f1f1f1',
+        'COLOR-5': '#0f0f0f',
+        'COLOR-6': '#aaa',
       }
     },
   },
