@@ -31,7 +31,7 @@ export default function Video() {
   function handleCopy() {
     navigator.clipboard.writeText(currentUrl)
     // toast.custom('link copied to clipboard!')
-    toast.success('Link copied to clipboard')
+    toast('Link copied to clipboard')
   }
 
   return (
