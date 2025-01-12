@@ -13,6 +13,13 @@ export default {
         'COLOR-4': '#f1f1f1',
         'COLOR-5': '#0f0f0f',
         'COLOR-6': '#aaa',
+        'COLOR-7': '#aaaaa',
+        'COLOR-8': '#222222',
+        'COLOR-9': '#272727',
+        'COLOR-10': '#ffffff33',
+        'COLOR-11': '#212121',
+        'COLOR-12': '#aaaaaa',
+        'COLOR-13': '#3ea6ff',
       }
     },
   },

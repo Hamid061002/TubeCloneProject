@@ -33,12 +33,26 @@ export async function getVideoByID(id) {
   let { data: videos, error } = await supabase
     .from('videos')
     .select('*')
-    .eq('id',id)
-    
-    if (error) {
-      console.log(error);
-      throw new Error(error.message)
-    }
+    .eq('id', id)
 
-    return videos[0]
+  if (error) {
+    console.log(error);
+    throw new Error(error.message)
+  }
+
+  return videos[0]
+}
+
+export async function getChannelByID(id) {
+  let { data: channels, error } = await supabase
+    .from('channels')
+    .select('*')
+    .eq('id', id)
+
+  if (error) {
+    console.log(error);
+    throw new Error(error.message)
+  }
+
+  return channels[0]
 }

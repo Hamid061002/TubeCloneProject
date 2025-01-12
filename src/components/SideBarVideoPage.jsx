@@ -53,11 +53,11 @@ export default function SideBarVideoPage() {
   return (
     <>
       <div
-        onClick={() => setIsOpenSidebarVideoPage(e => !e)}
+        onClick={() => {setIsOpenSidebarVideoPage(e => !e)}}
         className={`fixed top-0 size-full backdrop-brightness-50 transition-all duration-300 ${isOpenSidebarVideoPage ? 'visible opacity-100' : 'invisible opacity-0'}`}
       >
       </div>
-      <div className={`fixed top-0 transition-all duration-300 w-fit ${isOpenSidebarVideoPage ? 'translate-x-0 w-full opacity-100' : '-translate-x-60 opacity-0'}`}>
+      <div className={`fixed top-0 transition-all duration-300 w-60 ${isOpenSidebarVideoPage ? 'translate-x-0 opacity-100' : '-translate-x-60 opacity-0'}`}>
         <div className='flex flex-col gap-3 divide-y divide-white divide-opacity-20 h-screen bg-COLOR-5 w-60 p-3 text-white'>
           <div className='flex items-center gap-4'>
             <button onClick={() => setIsOpenSidebarVideoPage(e => !e)}>

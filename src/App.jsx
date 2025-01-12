@@ -8,6 +8,7 @@ import AppLayout from "./components/AppLayout"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
 import { ProviderContext } from "./contexts/ProviderContext"
+import { Toaster } from "react-hot-toast"
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -35,6 +36,20 @@ function App() {
           </Routes>
         </BrowserRouter>
       </ProviderContext>
+      <Toaster
+        position='bottom-left'
+        gutter={12}
+        toastOptions={{
+          duration: 3000,
+          success: {
+            duration: 5000,
+          },
+          error: {
+            duration: 5000,
+          },
+          className: 'min-h-12 me-auto p-3 rounded-lg bg-COLOR-4 shadow-md text-sm'
+        }}
+      />
     </QueryClientProvider>
   )
 }

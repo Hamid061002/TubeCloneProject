@@ -1,6 +1,6 @@
 import React from 'react'
 import ThreeDots from './icons/ThreeDots'
-import { convertNumViews } from '../utils/helpers'
+import { convertNumber } from '../utils/helpers'
 import { useValuesContext } from '../contexts/ProviderContext'
 
 export default function VideoCard({ video }) {
@@ -35,7 +35,7 @@ export default function VideoCard({ video }) {
               </div>
             </div>
             <div className="text-sm text-neutral-400 line-clamp-2">{channels?.find(e => e.id == video.channelId)?.name}</div>
-            <span className="text-sm text-neutral-400"><span>{convertNumViews(video.numViews)} views</span> • 3 weeks ago</span>
+            <span className="text-sm text-neutral-400"><span>{convertNumber(video.numViews)} views</span> • 3 weeks ago</span>
           </div>
         </div>
       </div>
