@@ -1,12 +1,36 @@
 import React from 'react'
-import TabList from '../../components/TabList'
-import VideosList from '../../components/VideosList'
+import Filter from '../../components/Filter'
+import HomeVideos from './HomeVideos'
+
 
 const Home = () => {
   return (
     <div className='px-1 py-2 w-full h-full'>
-      <TabList />
-      <VideosList />
+      <Filter
+        filterField='status'
+        options={[
+          {
+            label: 'All',
+            value: 'all',
+          },
+          {
+            label: 'Sport',
+            value: 'sport',
+          },
+          {
+            label: 'Learning',
+            value: 'learning',
+          },
+          {
+            label: 'Funny',
+            value: 'funny',
+          },
+          {
+            label: 'Programming',
+            value: 'programming',
+          },
+        ]} />
+      <HomeVideos />
     </div>
   )
 }

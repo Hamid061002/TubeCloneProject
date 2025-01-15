@@ -29,7 +29,7 @@ function App() {
               <Route index element={<Navigate replace to='home' />} />
               <Route path="home" element={<Home />} />
               <Route path="account" element={<Account />} />
-              <Route path="channel" element={<Channel />} />
+              <Route path="channel/:id" element={<Channel />} />
               <Route path="search" element={<Search />} />
               <Route path="video/:id" element={<Video />} />
             </Route>

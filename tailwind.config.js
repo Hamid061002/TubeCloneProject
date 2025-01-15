@@ -20,6 +20,7 @@ export default {
         'COLOR-11': '#212121',
         'COLOR-12': '#aaaaaa',
         'COLOR-13': '#3ea6ff',
+        'COLOR-14': '#ffffff1a',
       }
     },
   },

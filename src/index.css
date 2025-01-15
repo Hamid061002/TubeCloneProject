@@ -80,3 +80,7 @@ ul li a.active {
 ul li a.active:hover {
   background-color: #404040;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

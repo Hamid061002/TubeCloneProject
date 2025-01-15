@@ -1,9 +1,13 @@
 import React from 'react'
+import { useValuesContext } from '../../contexts/ProviderContext'
+import VideosList from '../../components/VideosList'
 
 const Search = () => {
+  const { videos } = useValuesContext()
+
   return (
     <div>
-      Search
+      <VideosList videoSize='small' videos={videos} />
     </div>
   )
 }

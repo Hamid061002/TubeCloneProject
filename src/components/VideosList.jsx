@@ -1,27 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import { useValuesContext } from '../contexts/ProviderContext'
-import ErrorConnection from './icons/ErrorConnection'
-import VideoCard from './VideoCard'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import Spinner from './Spinner'
+import VideoCard from './VideoCard'
 
-export default function VideosList() {
-  const { isOpenSidebar, videos, getVideosError, gettingVideos } = useValuesContext()
-
+export default function VideosList({ videos }) {
   return (
-    <>
+    <div className='flex flex-col gap-4'>
       {
-        gettingVideos ? <Spinner /> :
-          getVideosError ?
-            <div className='w-full h-full'>
-              <ErrorConnection />
-            </div> :
-            <div className={`grid gap-4 pt-6 pb-10 pe-6 w-full text-white ${isOpenSidebar ? 'grid-cols-4' : 'grid-cols-3'}`}>
-              {
-                videos?.map(item => (<Link key={item.id} to={`/video/${item.id}`}><VideoCard video={item} /></Link>))
-              }
-            </div>
+        videos?.map(item => (
+          <Link 
+          key={item.id} 
+          to={`/video/${item.id}`}
+          >
+            <VideoCard video={item} isSmallSize={true} />
+          </Link>
+        ))
       }
-    </>
+    </div>
   )
+  
 }

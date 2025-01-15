@@ -20,8 +20,6 @@ function ProviderContext({ children }) {
     queryFn: getChannels
   })
 
-
-
   return <ContextProvider.Provider value={{
     videos,
     channels,
