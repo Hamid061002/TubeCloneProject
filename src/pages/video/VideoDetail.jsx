@@ -14,8 +14,6 @@ import IconAbout from '../../components/icons/IconAbout';
 
 export default function VideoDetail({ video = {}, channel = {} }) {
   const { numViews, uploadDate, description, tags } = video
-  console.log(tags);
-
 
   const [isLiked, setIsLiked] = useState(false)
   const [isDisLiked, setIsDisLiked] = useState(false)
@@ -40,7 +38,7 @@ export default function VideoDetail({ video = {}, channel = {} }) {
               <div className='flex flex-col gap-2'>
                 <h1 className='text-xl font-medium'>{video?.title}</h1>
                 <div className='flex items-center gap-6 w-full'>
-                  <figure onClick={() => navigate(`/channel/${channel?.id}`)} className='flex gap-3 cursor-pointer'>
+                  <figure onClick={() => navigate(`/channel/${channel?.publicId}`)} className='flex gap-3 cursor-pointer'>
                     <img className='size-10 rounded-full' src={channel?.profile} alt="" />
 
                     <figcaption className='flex flex-col justify-between'>
@@ -75,13 +73,13 @@ export default function VideoDetail({ video = {}, channel = {} }) {
                       </button>
                     </div>
                     <Modal>
-                      <Modal.Open>
+                      <Modal.Open name='more'>
                         <button className='flex items-center gap-2 ps-3 pe-3 h-full bg-COLOR-9 hover:brightness-150 rounded-full overflow-hidden text-COLOR-4'>
                           <IconShare className='fill-current size-6 box-content' />
                           <span className='text-sm'>Share</span>
                         </button>
                       </Modal.Open>
-                      <Modal.Window>
+                      <Modal.Window name='more'>
                         <div className='flex flex-col gap-4'>
                           <div className='flex flex-col items-center gap-5'>
                             <h3 className='text-COLOR-4 '>Share in a post</h3>
@@ -112,8 +110,8 @@ export default function VideoDetail({ video = {}, channel = {} }) {
                     <p className='flex gap-1 text-COLOR-13'>{tags.map(tag => <button>#{tag}</button>)}</p>
                   </div>
                   <p>{description}</p>
-                  <div className='flex flex-col gap-4'>
-                    <Link className='mt-6' to={`/channel/${channel.id}`}>
+                  <div className={`flex flex-col gap-4 ${!isOpenDescription && 'hidden'}`}>
+                    <Link className='mt-6' to={`/channel/${channel.publicId}`}>
                       <figure className='flex gap-3'>
                         <img className='size-10 rounded-full' src={channel?.profile} alt="" />
 

@@ -56,3 +56,18 @@ export async function getChannelByID(id) {
 
   return channels[0]
 }
+
+export async function getChannelByPublicId(publicId) {
+  let { data: channels, error } = await supabase
+    .from('channels')
+    .select('*')
+    .eq('publicId', publicId)
+
+  if (error) {
+    console.log(error);
+    throw new Error(error.message)
+  }
+
+  return channels[0]
+}
+

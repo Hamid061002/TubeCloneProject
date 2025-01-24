@@ -5,37 +5,29 @@ import Channel from "./pages/channel/Channel"
 import Search from "./pages/search/Search"
 import Video from "./pages/video/Video"
 import AppLayout from "./components/AppLayout"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
-import { ProviderContext } from "./contexts/ProviderContext"
 import { Toaster } from "react-hot-toast"
-
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      staleTime: 1000 * 60
-    }
-  }
-})
+import VideosList from "./components/VideosList"
+import { useValuesContext } from "./contexts/ProviderContext"
 
 function App() {
+  const { videos } = useValuesContext()
+
   return (
-    <QueryClientProvider client={queryClient}>
-      <ReactQueryDevtools initialIsOpen={false} />
-      <ProviderContext>
-        <BrowserRouter>
-          <Routes>
-            <Route element={<AppLayout />} >
-              <Route index element={<Navigate replace to='home' />} />
-              <Route path="home" element={<Home />} />
-              <Route path="account" element={<Account />} />
-              <Route path="channel/:id" element={<Channel />} />
-              <Route path="search" element={<Search />} />
-              <Route path="video/:id" element={<Video />} />
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<AppLayout />} >
+            <Route index element={<Navigate replace to='home' />} />
+            <Route path="home" element={<Home />} />
+            <Route path="account" element={<Account />} />
+            <Route path="channel/:publicId" element={<Channel />}>
+              <Route path="videos" element={<VideosList videos={videos} isChannelVideos={true} />} />
             </Route>
-          </Routes>
-        </BrowserRouter>
-      </ProviderContext>
+            <Route path="search" element={<Search />} />
+            <Route path="video/:id" element={<Video />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
       <Toaster
         position='bottom-left'
         gutter={12}
@@ -50,7 +42,7 @@ function App() {
           className: 'min-h-12 me-auto p-3 rounded-lg bg-COLOR-4 shadow-md text-sm'
         }}
       />
-    </QueryClientProvider>
+    </>
   )
 }
 

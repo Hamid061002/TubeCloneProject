@@ -21,7 +21,7 @@ const NavBar = () => {
         }}>
           <IconHamburgerMenu className='rounded-full hover:bg-stone-800 text-white size-6 p-2 box-content' />
         </button>
-        <Link to='home'><Logo className='text-white fill-current' /></Link>
+        <Link to='home'><Logo className='text-white fill-current w-28' /></Link>
       </div>
       <form className='flex items-center gap-4 rounded-full text-white'>
         <Search />

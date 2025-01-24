@@ -48,12 +48,6 @@ const SideBar = () => {
     },
   ]
 
-  // useEffect(() => {
-  //   const navLinks1 = Array.from(document.getElementsByClassName('navLink'))
-  //   navLinks1.forEach(item => item.classList.contains('active') ? item.classList.add('bg-neutral-800') : item.classList.remove('bg-neutral-800'))
-  // }, [])
-
-
   return (
     <>
       {

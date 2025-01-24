@@ -1,6 +1,6 @@
 import React from 'react'
 import ThreeDots from './icons/ThreeDots'
-import { convertNumber } from '../utils/helpers'
+import { convertNumber, formatDistanceFromNow } from '../utils/helpers'
 import { useValuesContext } from '../contexts/ProviderContext'
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import { useQuery } from '@tanstack/react-query'
@@ -45,7 +45,7 @@ export default function VideoCard({ video, isTable, isSmallSize }) {
                     <div className='flex gap-1'>
                       <span>{convertNumber(numViews)} views</span>
                       <span>•</span>
-                      <span>3 years ago</span>
+                      <span>{formatDistanceFromNow(uploadDate)}</span>
                     </div>
                   </div>
                 </div>

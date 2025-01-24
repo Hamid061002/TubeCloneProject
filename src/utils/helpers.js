@@ -16,3 +16,10 @@ export function formatDistanceFromNow(dateStr) {
     addSuffix: true,
   }).replace('about ', '').replace('in', 'In');
 }
+
+export const formatCreatedAtDate = (dateStr) =>
+  formatDistance(parseISO(dateStr), new Date(), {
+    addSuffix: true,
+  })
+    .replace('about ', '')
+    .replace('in', 'In');

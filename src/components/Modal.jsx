@@ -33,7 +33,6 @@ function Window({ children, name }) {
         <button onClick={closeModalFn} className="absolute top-6 right-6"><HiXMark className="size-6" /></button>
         <div>{cloneElement(children, { onCloseModal: () => closeModalFn(openName) })}</div>
       </div>
-      <div className='max-w-72 h-12 p-3 rounded-lg bg-COLOR-4 shadow-md'></div>
     </div>,
     document.body
   )
