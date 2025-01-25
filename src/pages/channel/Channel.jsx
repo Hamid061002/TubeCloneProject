@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
-import React, { useState } from 'react'
-import { Link, Outlet, useParams } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, Outlet, useNavigate, useParams } from 'react-router-dom'
 import { getChannelByPublicId } from '../../services/youtubeAPI'
 import { convertNumber } from '../../utils/helpers'
 import { useValuesContext } from '../../contexts/ProviderContext'
@@ -10,35 +10,28 @@ import IconVideo from '../../components/icons/IconVideo'
 import IconInfo from '../../components/icons/IconInfo'
 import { format } from 'date-fns'
 import Filter from '../../components/Filter'
+import ChannelSkeleton from './ChannelSkeleton'
 
 const Channel = () => {
   const { publicId: paramsPublicId } = useParams()
   const [isSubscribe, setIsSubscribe] = useState(false)
   const currentUrl = window.location.href
-
+  const navigate = useNavigate()
+  
   const { isLoading: isFetchingChannels, data: channel = {}, error: errorChannels } = useQuery({
     queryKey: ['channel', paramsPublicId],
     queryFn: () => getChannelByPublicId(paramsPublicId)
   })
-
+  
   const { profile, name, publicId, numSubscribers, about, numVideos, createDate } = channel
+  
+  useEffect(() => {
+    if(publicId) navigate(`/channel/${publicId}/videos`)
+  }, [publicId])
 
   /* skeleton code */
   if (isFetchingChannels) return (
-    <div className='flex gap-4 py-4 px-14'>
-      <div className='size-40 rounded-full bg-COLOR-9 animate-pulse'></div>
-      <div className='flex flex-col gap-4'>
-        <div className='h-10 w-52 bg-COLOR-9 animate-pulse rounded-full'></div>
-        <div className='flex items-center gap-1 text-sm'>
-          <div className='h-5 w-20 bg-COLOR-9 animate-pulse rounded-full'></div>
-          <div className='flex items-center gap-2 text-COLOR-12'>
-            <div className='h-5 w-20 bg-COLOR-9 animate-pulse rounded-full'></div>
-            <div className='h-5 w-20 bg-COLOR-9 animate-pulse rounded-full'></div>
-          </div>
-        </div>
-        <div className='h-5 w-80 bg-COLOR-9 animate-pulse rounded-full'></div>
-      </div>
-    </div>
+    <ChannelSkeleton />
   )
 
   return (
@@ -97,8 +90,11 @@ const Channel = () => {
         </div>
       </div>
       <div className='flex flex-col gap-4'>
-        <ul className='border-b border-white border-opacity-20 px-14'>
-          <li className='font-semibold'><Link to={`/channel/${publicId}/videos`}>Videos</Link></li>
+        <ul className='border-b border-white border-opacity-20 px-14 pb-2'>
+          <li className='w-fit font-semibold relative'>
+            <Link to={`/channel/${publicId}/videos`}>Videos</Link>
+            <div className='absolute -bottom-2 w-full h-[2px] bg-COLOR-4'></div>
+          </li>
         </ul>
         <div className='flex flex-col gap-4 px-14'>
           <Filter

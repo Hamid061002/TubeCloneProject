@@ -9,6 +9,7 @@ function ProviderContext({ children }) {
   const [isOpenSidebarVideoPage, setIsOpenSidebarVideoPage] = useState(false)
   const [isFocusInput, setIsFocusInput] = useState(false)
   const [isNotification, setIsNotification] = useState(false)
+  const [query, setQuery] = useState('')
 
   const { isLoading: gettingVideos, data: videos, error: getVideosError } = useQuery({
     queryKey: ['videos'],
@@ -35,6 +36,8 @@ function ProviderContext({ children }) {
     setIsNotification,
     isOpenSidebarVideoPage,
     setIsOpenSidebarVideoPage,
+    query,
+    setQuery
   }}>
     {children}
   </ContextProvider.Provider>

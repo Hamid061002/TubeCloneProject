@@ -1,9 +1,11 @@
 import React from 'react'
 import { useValuesContext } from '../contexts/ProviderContext'
 import IconSearch from './icons/IconSearch'
+import { useSearchParams } from 'react-router-dom'
 
-export default function Search() {
+export default function Search({ query, handleSearch }) {
   const { setIsFocusInput, isFocusInput } = useValuesContext()
+
   return (
     <div className='flex items-center'>
       <div className={`flex items-center gap-3 px-4 py-2 w-[500px] h-full rounded-y-full border-y  bg-COLOR-2 relative ${isFocusInput ? 'border-blue-400 border-e' : 'rounded-s-full border-s border-COLOR-3'}`}>
@@ -13,6 +15,8 @@ export default function Search() {
           onFocus={() => setIsFocusInput(true)}
           onBlur={() => setIsFocusInput(false)}
           placeholder='Search'
+          onChange={handleSearch}
+          value={query}
           type="search"
         />
       </div>

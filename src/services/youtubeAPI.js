@@ -71,3 +71,18 @@ export async function getChannelByPublicId(publicId) {
   return channels[0]
 }
 
+export default async function getVideosSearch(query) {
+  const { data, error } = await supabase
+    .from('videos')
+    .select('*')
+    .ilike('title', `%${query}%`)
+
+  if (error) {
+    console.log(error);
+    throw new Error(error.message)
+  }
+
+  return data
+
+}
+
