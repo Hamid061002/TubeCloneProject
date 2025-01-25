@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 import { getChannelByPublicId } from '../services/youtubeAPI'
 import VideoChannelCard from './VideoChannelCard'
 
-export default function VideosList({ videos, isChannelVideos = false }) {
+export default function VideosList({ videos, isChannelVideos = false, isSmallSize = false }) {
   const { publicId } = useParams()
 
   const { data: channel } = useQuery({
@@ -35,7 +35,7 @@ export default function VideosList({ videos, isChannelVideos = false }) {
             key={item.id}
             to={`/video/${item.id}`}
           >
-            <VideoCard video={item} isSmallSize={true} />
+            <VideoCard video={item} isSmallSize={isSmallSize} />
           </Link>
         ))
       }

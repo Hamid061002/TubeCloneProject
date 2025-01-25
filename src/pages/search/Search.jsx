@@ -24,7 +24,7 @@ export default function Search() {
   const searchedVideos = searchVideos
 
   return (
-    <div className='flex flex-col gap-6 pt-3'>
+    <div className='flex flex-col gap-6 pt-3 pb-20'>
       <Filter
         filterField="status"
         options={[

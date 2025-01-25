@@ -45,7 +45,7 @@ export default function Video() {
                 { value: "recently-uploaded", label: "Recently uploaded" },
               ]}
             />
-            <VideosList videos={videos} />
+            <VideosList videos={videos} isSmallSize={true} />
           </div>
         </div>
   )
